@@ -1,5 +1,5 @@
-class DogsController < ApplicationController
-  before_action :set_dog, only: [:show, :update, :destroy]
+class DogsController < OpenReadController
+  before_action :set_dog, only: %i[:update, :destroy]
 
   # GET /dogs
   def index
@@ -10,15 +10,15 @@ class DogsController < ApplicationController
 
   # GET /dogs/1
   def show
-    render json: @dog
+    render json: Dog.find(params[:id])
   end
 
   # POST /dogs
   def create
-    @dog = Dog.new(dog_params)
+    @dog = current_user.dogs.build(dog_params)
 
     if @dog.save
-      render json: @dog, status: :created, location: @dog
+      render json: @dog, status: :created
     else
       render json: @dog.errors, status: :unprocessable_entity
     end
@@ -36,16 +36,17 @@ class DogsController < ApplicationController
   # DELETE /dogs/1
   def destroy
     @dog.destroy
+
+    head :no_content
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dog
-      @dog = Dog.find(params[:id])
-    end
+  def set_dog
+    @dog = current_user.dogs.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def dog_params
-      params.require(:dog).permit(:name, :breed)
-    end
+  def dog_params
+    params.require(:dog).permit(:text)
+  end
+
+  private :set_dog, :dog_params
 end
