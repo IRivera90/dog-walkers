@@ -1,5 +1,5 @@
 class DogsController < OpenReadController
-  before_action :set_dog, only: %i[:update, :destroy]
+  before_action :set_dog, only: %i[update destroy]
 
   # GET /dogs
   def index
@@ -45,7 +45,7 @@ class DogsController < OpenReadController
   end
 
   def dog_params
-    params.require(:dog).permit(:text)
+    params.require(:dog).permit(:name, :breed)
   end
 
   private :set_dog, :dog_params
