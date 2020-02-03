@@ -1,16 +1,16 @@
-class DogsController < OpenReadController
-  before_action :set_dog, only: %i[update destroy]
+class DogsController < ProtectedController
+  before_action :set_dog, only: %i[show update destroy]
 
   # GET /dogs
   def index
-    @dogs = Dog.all
+    @dogs = current_user.dogs.all
 
     render json: @dogs
   end
 
   # GET /dogs/1
   def show
-    render json: Dog.find(params[:id])
+    render json: @dog
   end
 
   # POST /dogs
@@ -18,7 +18,7 @@ class DogsController < OpenReadController
     @dog = current_user.dogs.build(dog_params)
 
     if @dog.save
-      render json: @dog, status: :created
+      render json: @dog, status: :created, location: @dog
     else
       render json: @dog.errors, status: :unprocessable_entity
     end
@@ -26,6 +26,8 @@ class DogsController < OpenReadController
 
   # PATCH/PUT /dogs/1
   def update
+    @dog = current_user.dogs.find(params[:id])
+
     if @dog.update(dog_params)
       render json: @dog
     else
@@ -45,8 +47,7 @@ class DogsController < OpenReadController
   end
 
   def dog_params
-    params.require(:dog).permit(:name, :breed)
+    params.require(:dog).permit(:id, :name, :breed)
   end
-
   private :set_dog, :dog_params
 end
