@@ -4,7 +4,7 @@ This application allows the user to register all the dogs that they walk. Just a
 
 ## Important Links
 
-- [Other Repo](www.link.com)
+- Other Repo: https://github.com/IRivera90/dog-walkers-client
 - [Deployed API](www.link.com)
 - [Deployed Client](www.link.com)
 
