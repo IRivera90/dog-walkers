@@ -35,10 +35,11 @@ Update dogs for whatever reason?
 ### Unsolved Problems
 
 - Would like to eventually add css to the page
+- Finish this read me
 
 ## Images
 
 ---
 
 #### Wireframe:
-![wireframe](https://lucidchart.zendesk.com/hc/article_attachments/360001080866/Facebook_Wireframe_-_New_Page.png)
+<a href="https://imgur.com/b8Nmi9V"><img src="https://i.imgur.com/b8Nmi9V.jpg" title="source: imgur.com" /></a>
