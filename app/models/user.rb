@@ -2,5 +2,5 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :dogs
+  has_many :dogs, :small_pets
 end

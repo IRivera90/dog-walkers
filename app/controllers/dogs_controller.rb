@@ -26,7 +26,6 @@ class DogsController < ProtectedController
 
   # PATCH/PUT /dogs/1
   def update
-
     if @dog.update(dog_params)
       render json: @dog
     else
