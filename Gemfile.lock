@@ -184,7 +184,7 @@ GEM
     unicode-display_width (1.6.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
 
 PLATFORMS
   ruby
@@ -200,7 +200,7 @@ DEPENDENCIES
   pry-byebug (~> 3.6.0)
   pry-rails (~> 0.3.6)
   puma (~> 3.11.2)
-  rack-cors (~> 1.0.2)
+  rack-cors (~> 1.0.5)
   rails (~> 5.2.3)
   rails_12factor (~> 0.0.3)
   rspec-rails (~> 3.7.2)
